@@ -78,7 +78,7 @@ export default function Hero() {
             margin:'0 0 20px'
           }}
         >
-          💎 11 anos de experiência • 🏆 O melhor planejamento tributário para a sua empresa
+          💎 25 anos de experiência • 🏆 O melhor planejamento tributário para a sua empresa
         </h2>
 
         <div style={{ marginTop:16, display:'flex', gap:12, flexWrap:'wrap' }}>
