@@ -9,7 +9,10 @@ export default function Hero() {
   const [current, setCurrent] = useState(0)
   const mq = useRef(null)
 
-  // Se as imagens estão na pasta "public/assets", use os caminhos absolutos
+  // flag de mobile para posicionar o carrossel
+  const [isMobile, setIsMobile] = useState(false)
+
+  // imagens no /public/assets
   const photos = [
     { src: '/assets/marx01.png', alt: 'Marx — Tática Assessoria Contábil' },
     { src: '/assets/rayana.png', alt: 'Rayana — Tática Assessoria Contábil' },
@@ -17,16 +20,16 @@ export default function Hero() {
   ]
 
   useEffect(() => {
-    // Vídeo de fundo respeitando prefers-reduced-motion
+    // vídeo respeitando prefers-reduced-motion
     mq.current = window.matchMedia('(prefers-reduced-motion: reduce)')
     const apply = () => {
       if (!videoRef.current) return
       if (mq.current.matches) { 
         videoRef.current.pause()
-        videoRef.current.style.display = 'none' 
-      } else { 
-        videoRef.current.style.display = '' 
-        videoRef.current.play().catch(()=>{}) 
+        videoRef.current.style.display = 'none'
+      } else {
+        videoRef.current.style.display = ''
+        videoRef.current.play().catch(()=>{})
       }
     }
     apply()
@@ -35,13 +38,54 @@ export default function Hero() {
   }, [])
 
   useEffect(() => {
-    // Rotação automática do carrossel
+    // rotação do carrossel (pausa se prefers-reduced-motion)
     if (mq.current?.matches) return
     const id = setInterval(() => {
       setCurrent((i) => (i + 1) % photos.length)
-    }, 2000) // troca a cada 2 segundos
+    }, 2000)
     return () => clearInterval(id)
   }, [photos.length])
+
+  useEffect(() => {
+    // detectar mobile para reposicionar o carrossel
+    const m = window.matchMedia('(max-width: 640px)')
+    const onChange = () => setIsMobile(m.matches)
+    onChange()
+    m.addEventListener?.('change', onChange) || m.addListener(onChange)
+    return () => m.removeEventListener?.('change', onChange) || m.removeListener(onChange)
+  }, [])
+
+  // estilos do carrossel responsivos
+  const carouselStyle = isMobile
+    ? {
+        zIndex: 2,
+        position: 'absolute',
+        right: '12px',
+        top: '90px',            // sobe no topo no mobile para não colidir com botões
+        bottom: 'auto',
+        width: 'min(26vw, 120px)',
+        aspectRatio: '3/4',
+        borderRadius: '18px',
+        overflow: 'hidden',
+        boxShadow: '0 14px 30px rgba(0,0,0,.45)',
+        background: 'linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02))',
+        backdropFilter: 'blur(2px)',
+        pointerEvents: 'none',  // evita bloquear cliques nos botões
+      }
+    : {
+        zIndex: 2,
+        position: 'absolute',
+        right: 'max(4vw, 16px)',
+        bottom: 'max(6vh, 24px)',
+        width: 'min(18vw, 190px)', // metade do tamanho desktop original
+        aspectRatio: '3/4',
+        borderRadius: '20px',
+        overflow: 'hidden',
+        boxShadow: '0 20px 50px rgba(0,0,0,.45)',
+        background: 'linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02))',
+        backdropFilter: 'blur(2px)',
+        pointerEvents: 'none',
+      }
 
   return (
     <header
@@ -87,24 +131,8 @@ export default function Hero() {
         }}
       />
 
-      {/* CARROSSEL SOBRE O VÍDEO (direita) */}
-      <div
-        className="hero-person"
-        style={{
-          zIndex:2,
-          position:'absolute',
-          right:'max(4vw, 16px)',
-          bottom:'max(6vh, 24px)',
-          width:'min(18vw, 190px)', // reduzido pela metade
-          aspectRatio:'3/4',
-          borderRadius:'20px',
-          overflow:'hidden',
-          boxShadow:'0 20px 50px rgba(0,0,0,.45)',
-          background:'linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02))',
-          backdropFilter:'blur(2px)',
-        }}
-        aria-label="Equipe Tática — carrossel de fotos"
-      >
+      {/* CARROSSEL SOBRE O VÍDEO */}
+      <div className="hero-person" style={carouselStyle} aria-label="Equipe Tática — carrossel de fotos">
         {photos.map((img, i) => (
           <img
             key={img.src}
@@ -124,7 +152,7 @@ export default function Hero() {
         ))}
       </div>
 
-      {/* CONTEÚDO — alinhado à esquerda com espaço para o carrossel */}
+      {/* CONTEÚDO */}
       <div className="container hero-content" style={{ zIndex:2 }}>
         <h1 style={{ fontSize:'clamp(28px,5vw,44px)', margin:'8px 0 10px' }}>
           Precisa abrir ou migrar sua empresa?

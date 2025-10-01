@@ -12,7 +12,7 @@ export default function HeroCarousel() {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrent((prev) => (prev + 1) % images.length);
-    }, 2000); // troca a cada 2 segundos
+    }, 2000); // troca a cada 3 segundos
     return () => clearInterval(timer);
   }, []);
 
