@@ -7,6 +7,7 @@ export default function Services() {
     'Assessoria Trabalhista',
     'Assessoria Societária',
     'Revisão e Planejamento Tributário',
+    'Auditoria Contábil, Fiscal e Trabalhista', // <-- novo serviço
     'Contabilidade para Infoprodutores',
     'Contabilidade para E-commerce & Dropshipping',
     'Contabilidade para MEI',
