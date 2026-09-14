@@ -4,6 +4,7 @@ import { translations } from '../translations'
 import Navbar from '../components/Navbar'
 import Hero from '../components/Hero'
 import Services from '../components/Services'
+import NfseHub from '../components/NfseHub'
 import Segments from '../components/Segments'
 import Benefits from '../components/Benefits'
 import News from '../components/News'
@@ -15,6 +16,7 @@ import WhatsAppFloat from '../components/WhatsAppFloat'
 
 // Páginas dedicadas
 import ServicosPage from './ServicosPage'
+import NfsePage from './NfsePage'
 import SegmentosPage from './SegmentosPage'
 import BeneficiosPage from './BeneficiosPage'
 import NoticiasPage from './NoticiasPage'
@@ -49,6 +51,7 @@ export default function App() {
               </section>
 
               <Services t={t} />
+              <NfseHub t={t} />
               <Segments t={t} />
               <Benefits t={t} />
               <News t={t} />
@@ -61,6 +64,7 @@ export default function App() {
 
         {/* Rotas das páginas no menu */}
         <Route path="/servicos" element={<ServicosPage t={t} />} />
+        <Route path="/emissao-nfse" element={<NfsePage t={t} />} />
         <Route path="/segmentos" element={<SegmentosPage t={t} />} />
         <Route path="/beneficios" element={<BeneficiosPage t={t} />} />
         <Route path="/noticias" element={<NoticiasPage t={t} />} />

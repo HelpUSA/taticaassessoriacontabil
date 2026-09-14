@@ -45,6 +45,7 @@ export default function Navbar({ lang = 'pt', setLang, t }) {
         <div id="primary-menu" className={`nav-links ${open ? 'open' : ''}`}>
           <NavLink to="/" end onClick={() => setOpen(false)}>Início</NavLink>
           <NavLink to="/servicos" onClick={() => setOpen(false)}>{t.nav.servicos}</NavLink>
+          <NavLink to="/emissao-nfse" onClick={() => setOpen(false)} className="text-emerald-400 font-bold">Emissão NFS-e ⚡</NavLink>
           <NavLink to="/segmentos" onClick={() => setOpen(false)}>{t.nav.segmentos}</NavLink>
           <NavLink to="/beneficios" onClick={() => setOpen(false)}>{t.nav.beneficios}</NavLink>
           <NavLink to="/noticias" onClick={() => setOpen(false)}>{t.nav.noticias}</NavLink>
