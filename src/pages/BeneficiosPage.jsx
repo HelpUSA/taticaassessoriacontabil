@@ -1,11 +1,10 @@
 import React from 'react'
 import Benefits from '../components/Benefits'
 
-export default function BeneficiosPage() {
+export default function BeneficiosPage({ t }) {
   return (
     <main className="page container">
-      <Benefits />
+      <Benefits t={t} />
     </main>
   )
 }
-

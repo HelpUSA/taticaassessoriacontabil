@@ -1,38 +1,29 @@
 import React from 'react'
 
-export default function Services() {
-  const services = [
-    'Assessoria Contábil',
-    'Assessoria Fiscal e Tributária',
-    'Assessoria Trabalhista',
-    'Assessoria Societária',
-    'Revisão e Planejamento Tributário',
-    'Auditoria Contábil, Fiscal e Trabalhista', // <-- novo serviço
-    'Contabilidade para Infoprodutores',
-    'Contabilidade para E-commerce & Dropshipping',
-    'Contabilidade para MEI',
-    'Imposto de Renda PF e PJ',
-    'Certificado Digital',
-  ]
-
-  const wa = 'https://wa.me/5583988419118?text=' +
-    encodeURIComponent('Olá! Gostaria de saber mais sobre os serviços de contabilidade.')
+export default function Services({ t }) {
+  const waText = encodeURIComponent(t.waMessage)
+  const waUrl = `https://wa.me/5583988419118?text=${waText}`
 
   return (
     <section id="servicos" className="section container">
-      <h2>Serviços ideais para a sua empresa</h2>
+      <div className="section-header center">
+        <h2>{t.services.title}</h2>
+        <p className="muted">{t.services.subtitle}</p>
+      </div>
+
       <div className="grid cards">
-        {services.map((t) => (
-          <article className="card" key={t}>
-            <h3>{t}</h3>
-            <p>Atendimento completo e orientação contínua para o seu negócio.</p>
+        {t.services.list.map((s, idx) => (
+          <article className="card service-card" key={idx}>
+            <div className="card-icon font-mono">0{idx + 1}</div>
+            <h3>{s.title}</h3>
+            <p>{s.desc}</p>
           </article>
         ))}
       </div>
 
-      <div className="center" style={{ marginTop: 24 }}>
-        <a className="btn primary" href={wa} target="_blank" rel="noopener">
-          Falar com um contador
+      <div className="center mt-6">
+        <a className="btn primary glow" href={waUrl} target="_blank" rel="noopener noreferrer">
+          {t.services.ctaTalk}
         </a>
       </div>
     </section>

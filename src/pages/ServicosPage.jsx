@@ -1,11 +1,10 @@
 import React from 'react'
 import Services from '../components/Services'
 
-export default function ServicosPage() {
+export default function ServicosPage({ t }) {
   return (
     <main className="page container">
-      <Services />
+      <Services t={t} />
     </main>
   )
 }
-

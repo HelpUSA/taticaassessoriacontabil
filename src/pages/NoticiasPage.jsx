@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import News from '../components/News'
 
-
 const IMAGES = [
   '/assets/image01.jpg',
   '/assets/image02.jpg',
@@ -13,14 +12,13 @@ const IMAGES = [
   '/assets/image08.jpg.png',
 ]
 
-export default function NoticiasPage(){
+export default function NoticiasPage({ t }) {
   const viewportRef = useRef(null)
   const trackRef = useRef(null)
   const [paused, setPaused] = useState(false)
   const [slidesPerView, setSlidesPerView] = useState(3)
   const slideWRef = useRef(0)
 
-  // define slides por view (3/2/1)
   useEffect(() => {
     const calcSpv = () => {
       const w = window.innerWidth
@@ -31,7 +29,6 @@ export default function NoticiasPage(){
     return () => window.removeEventListener('resize', calcSpv)
   }, [])
 
-  // mede a largura efetiva de um slide (incluindo gap)
   const measureSlideWidth = () => {
     if (!trackRef.current) return
     const slides = trackRef.current.querySelectorAll('.hslide')
@@ -62,6 +59,7 @@ export default function NoticiasPage(){
       vp.scrollBy({ left: slideWRef.current, behavior: 'smooth' })
     }
   }
+
   const prev = () => {
     const vp = viewportRef.current
     if (!vp || !slideWRef.current) return
@@ -72,7 +70,6 @@ export default function NoticiasPage(){
     }
   }
 
-  // autoplay
   useEffect(() => {
     if (paused) return
     const id = setInterval(next, 4000)
@@ -81,13 +78,13 @@ export default function NoticiasPage(){
 
   return (
     <main className="page container">
-      <h1>Notícias & Blog</h1>
-      <p className="page-lead">Publicações, avisos e conteúdos da Tática.</p>
+      <h1 className="mb-2">{t.news.title}</h1>
+      <p className="page-lead mb-6">{t.news.subtitle}</p>
 
-      <h2 className="h2">Galeria</h2>
+      <h2 className="h2 mb-4">{t.news.galleryTitle}</h2>
 
       <div
-        className="hcarousel"
+        className="hcarousel mb-8"
         style={{ '--spv': slidesPerView }}
         onMouseEnter={() => setPaused(true)}
         onMouseLeave={() => setPaused(false)}
@@ -102,12 +99,15 @@ export default function NoticiasPage(){
           </div>
         </div>
 
-        <button className="hcarousel-btn prev" onClick={prev} aria-label="Anterior">‹</button>
-        <button className="hcarousel-btn next" onClick={next} aria-label="Próximo">›</button>
+        <button className="hcarousel-btn prev" onClick={prev} aria-label="Anterior">
+          ‹
+        </button>
+        <button className="hcarousel-btn next" onClick={next} aria-label="Próximo">
+          ›
+        </button>
       </div>
 
-      <News />
+      <News t={t} />
     </main>
   )
 }
-

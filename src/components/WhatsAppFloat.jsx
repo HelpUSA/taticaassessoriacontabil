@@ -1,7 +1,8 @@
 import React from 'react'
 
-export default function WhatsAppFloat() {
-  const text = encodeURIComponent('Olá! Vim pelo site tatica.helpusbr.com e gostaria de solicitar um atendimento.')
+export default function WhatsAppFloat({ t }) {
+  const waMessage = t ? t.waMessage : 'Olá! Vim pelo site tatica.helpusbr.com e gostaria de solicitar um atendimento.'
+  const text = encodeURIComponent(waMessage)
   const wa = `https://wa.me/5583988419118?text=${text}`
 
   return (
@@ -10,7 +11,7 @@ export default function WhatsAppFloat() {
       href={wa}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="Falar no WhatsApp com a Tática Assessoria Contábil"
+      aria-label="Atendimento WhatsApp Tática Assessoria Contábil"
       title="Atendimento via WhatsApp"
     >
       <span className="wa-pulse" />
@@ -27,4 +28,3 @@ export default function WhatsAppFloat() {
     </a>
   )
 }
-

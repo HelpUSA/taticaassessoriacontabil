@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
+import { translations } from '../translations'
 import Navbar from '../components/Navbar'
 import Hero from '../components/Hero'
 import Services from '../components/Services'
@@ -22,11 +23,12 @@ import ParceirosPage from './ParceirosPage'
 import ContatoPage from './ContatoPage'
 
 export default function App() {
-  const telLink = 'tel:+5583988419118'
+  const [lang, setLang] = useState('pt')
+  const t = translations[lang] || translations.pt
 
   return (
     <>
-      <Navbar />
+      <Navbar lang={lang} setLang={setLang} t={t} />
 
       <Routes>
         {/* HOME — Landing Page Completa */}
@@ -34,35 +36,37 @@ export default function App() {
           path="/"
           element={
             <>
-              <Hero />
+              <Hero t={t} />
 
               <section className="strip">
                 <div className="container strip-inner">
-                  <div>📍 Avenida João Câncio, 620 — Sala 901 — Manaíra, João Pessoa - PB</div>
-                  <div>⏰ Seg–Sex 08h–18h</div>
-                  <div>☎️ <a href={telLink}>+55 83 98841-9118</a></div>
+                  <div>{t.strip.address}</div>
+                  <div>{t.strip.hours}</div>
+                  <div>
+                    <a href="tel:+5583988419118">{t.strip.phone}</a>
+                  </div>
                 </div>
               </section>
 
-              <Services />
-              <Segments />
-              <Benefits />
-              <News />
-              <FAQ />
-              <Partners />
-              <Contact />
+              <Services t={t} />
+              <Segments t={t} />
+              <Benefits t={t} />
+              <News t={t} />
+              <FAQ t={t} />
+              <Partners t={t} />
+              <Contact t={t} />
             </>
           }
         />
 
         {/* Rotas das páginas no menu */}
-        <Route path="/servicos" element={<ServicosPage />} />
-        <Route path="/segmentos" element={<SegmentosPage />} />
-        <Route path="/beneficios" element={<BeneficiosPage />} />
-        <Route path="/noticias" element={<NoticiasPage />} />
-        <Route path="/faq" element={<FAQPage />} />
-        <Route path="/parceiros" element={<ParceirosPage />} />
-        <Route path="/contato" element={<ContatoPage />} />
+        <Route path="/servicos" element={<ServicosPage t={t} />} />
+        <Route path="/segmentos" element={<SegmentosPage t={t} />} />
+        <Route path="/beneficios" element={<BeneficiosPage t={t} />} />
+        <Route path="/noticias" element={<NoticiasPage t={t} />} />
+        <Route path="/faq" element={<FAQPage t={t} />} />
+        <Route path="/parceiros" element={<ParceirosPage t={t} />} />
+        <Route path="/contato" element={<ContatoPage t={t} />} />
 
         {/* 404 */}
         <Route
@@ -76,9 +80,8 @@ export default function App() {
         />
       </Routes>
 
-      <Footer />
-      <WhatsAppFloat />
+      <Footer t={t} />
+      <WhatsAppFloat t={t} />
     </>
   )
 }
-
