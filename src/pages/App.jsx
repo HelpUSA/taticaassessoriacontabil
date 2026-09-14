@@ -51,7 +51,6 @@ export default function App() {
               </section>
 
               <Services t={t} />
-              <NfseHub t={t} />
               <Segments t={t} />
               <Benefits t={t} />
               <News t={t} />

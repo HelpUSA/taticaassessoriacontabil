@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 export default function Footer({ t }) {
   const [showLoginModal, setShowLoginModal] = useState(false)
   const [loginSuccess, setLoginSuccess] = useState(false)
+  const navigate = useNavigate()
 
   const mapsLink =
     'https://www.google.com/maps?q=Avenida%20Jo%C3%A3o%20C%C3%A2ncio%2C%20620%20%E2%80%94%20Sala%20901%20%E2%80%94%20Mana%C3%ADra%2C%20Jo%C3%A3o%20Pessoa%20-%20PB'
@@ -13,13 +15,14 @@ export default function Footer({ t }) {
   const telUrl = 'tel:+5583988419118'
 
   const handleLoginSubmit = (e) => {
-    e.preventDefault()
+    if (e && e.preventDefault) e.preventDefault()
     setLoginSuccess(true)
     setTimeout(() => {
       setLoginSuccess(false)
       setShowLoginModal(false)
-      alert('🔒 Login Institucional Realizado! Redirecionando para o Painel Fiscal Multi-CNPJ Tática...')
-    }, 1200)
+      navigate('/emissao-nfse')
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }, 1000)
   }
 
   return (
@@ -39,14 +42,14 @@ export default function Footer({ t }) {
                 {t.footer.creci}
               </div>
 
-              {/* Botão de Login Institucional do Contador no Rodapé */}
+              {/* Botão de Área Administrativa no Rodapé */}
               <button
                 type="button"
                 onClick={() => setShowLoginModal(true)}
                 className="btn ghost small mt-2"
                 style={{ borderColor: 'rgba(96, 165, 250, 0.4)', color: '#60a5fa' }}
               >
-                🔒 Área do Contador / Login Institucional
+                🔒 Área Administrativa (Login do Contador)
               </button>
             </div>
 
@@ -54,14 +57,23 @@ export default function Footer({ t }) {
             <div className="footer-col">
               <h4 className="footer-heading">{t.footer.quickLinks}</h4>
               <ul className="footer-links">
-                <li><a href="#hero">{t.nav.servicos}</a></li>
-                <li><a href="#/emissao-nfse">Emissão NFS-e ⚡</a></li>
-                <li><a href="#segmentos">{t.nav.segmentos}</a></li>
-                <li><a href="#beneficios">{t.nav.beneficios}</a></li>
-                <li><a href="#noticias">{t.nav.noticias}</a></li>
-                <li><a href="#faq">{t.nav.faq}</a></li>
-                <li><a href="#parceiros">{t.nav.parceiros}</a></li>
-                <li><a href="#contato">{t.nav.contato}</a></li>
+                <li><a href="#/">{t.nav.inicio || 'Início'}</a></li>
+                <li><a href="#/servicos">{t.nav.servicos}</a></li>
+                <li><a href="#/segmentos">{t.nav.segmentos}</a></li>
+                <li><a href="#/beneficios">{t.nav.beneficios}</a></li>
+                <li><a href="#/noticias">{t.nav.noticias}</a></li>
+                <li><a href="#/faq">{t.nav.faq}</a></li>
+                <li><a href="#/parceiros">{t.nav.parceiros}</a></li>
+                <li><a href="#/contato">{t.nav.contato}</a></li>
+                <li>
+                  <button
+                    type="button"
+                    onClick={() => setShowLoginModal(true)}
+                    style={{ background: 'none', border: 'none', color: '#60a5fa', cursor: 'pointer', padding: 0, fontSize: '13px' }}
+                  >
+                    🔒 Área Administrativa
+                  </button>
+                </li>
               </ul>
             </div>
 
@@ -108,7 +120,7 @@ export default function Footer({ t }) {
                 className="text-xs text-blue-400 hover:underline flex items-center gap-1"
                 style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
               >
-                🔒 Login do Setor Fiscal / Contador
+                🔒 Área Administrativa / Login do Setor Fiscal
               </button>
             </div>
 
@@ -135,7 +147,7 @@ export default function Footer({ t }) {
             <div className="flex justify-between items-center border-b border-gray-800 pb-3 mb-4">
               <div className="flex items-center gap-2">
                 <span className="text-xl">🔒</span>
-                <h3 className="text-lg font-bold text-white margin-0">Login Institucional — Área do Contador</h3>
+                <h3 className="text-lg font-bold text-white margin-0">Área Administrativa — Login do Contador</h3>
               </div>
               <button
                 type="button"
@@ -155,7 +167,7 @@ export default function Footer({ t }) {
               <div className="text-center py-6">
                 <div className="text-3xl mb-2">⚡</div>
                 <h4 className="text-emerald-400 font-bold text-base mb-1">Autenticação Concluída!</h4>
-                <p className="text-xs text-gray-300">Carregando painel de procurações e emissão de notas...</p>
+                <p className="text-xs text-gray-300">Redirecionando para a Central Interna de Emissão NFS-e...</p>
               </div>
             ) : (
               <form onSubmit={handleLoginSubmit} className="space-y-4">
@@ -182,13 +194,13 @@ export default function Footer({ t }) {
                   <label className="flex items-center gap-2 cursor-pointer">
                     <input type="checkbox" defaultChecked /> Manter conectado
                   </label>
-                  <a href="#contato" onClick={() => setShowLoginModal(false)} className="text-blue-400 hover:underline">
+                  <a href="#/contato" onClick={() => setShowLoginModal(false)} className="text-blue-400 hover:underline">
                     Esqueceu a senha?
                   </a>
                 </div>
 
                 <button className="btn primary glow full mt-3" type="submit">
-                  Entrar no Painel Fiscal 🔑
+                  Entrar na Central Administrativa 🔑
                 </button>
 
                 <div className="text-center mt-3 pt-3 border-t border-gray-800">
@@ -196,7 +208,6 @@ export default function Footer({ t }) {
                     type="button"
                     className="btn ghost small full"
                     onClick={() => {
-                      alert('🔑 Procuração e-CNPJ Mestre detectada! Autenticando via Certificado Digital A1...')
                       handleLoginSubmit({ preventDefault: () => {} })
                     }}
                   >
@@ -211,3 +222,4 @@ export default function Footer({ t }) {
     </>
   )
 }
+
