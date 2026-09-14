@@ -1,4 +1,9 @@
-# Tática Assessoria Contábil — Site (React + Vite)
+# Tática Assessoria Contábil
+
+Landing Page e Portal de Serviços da **Tática Assessoria Contábil** ([https://tatica.helpusbr.com/](https://tatica.helpusbr.com/)).
+
+Desenvolvido pela **HelpUS Technology**.
+
 ## Rodar localmente
 ```bash
 npm i
