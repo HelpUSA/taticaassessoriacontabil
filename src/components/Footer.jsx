@@ -42,16 +42,13 @@ export default function Footer(){
 
       {/* Créditos HelpUS */}
       <div className="footer-inner container footer-credits">
-        <div>© {new Date().getFullYear()} Tática Assessoria Contábil</div>
+        <div>© {new Date().getFullYear()} Tática Assessoria Contábil • Todos os direitos reservados.</div>
 
-        <a className="credit" href="https://helpusbr.com" target="_blank" rel="noopener noreferrer">
-          <img
-            src="/assets/helpus-icon.png"
-            alt="HelpUS"
-            width="34" height="34"
-            style={{borderRadius:8, background:'#fff', padding:4, border:'1px solid #ffffff22'}}
-          />
-          <span>Site desenvolvido pela <strong>HelpUS</strong></span>
+        <a className="credit" href="https://helpusbr.com" target="_blank" rel="noopener noreferrer" title="Desenvolvido por HelpUS Technology — Soluções Web & Software">
+          <span className="helpus-badge">
+            <span className="helpus-badge-dot" />
+            Desenvolvido por <strong style={{ color: '#60a5fa' }}>HelpUS Technology</strong>
+          </span>
         </a>
       </div>
     </footer>

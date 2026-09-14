@@ -1,10 +1,30 @@
 import React from 'react'
-export default function WhatsAppFloat(){
-  const wa = 'https://wa.me/5583988419118?text=' + encodeURIComponent('Olá! Quero falar com a Tática Assessoria Contábil.');
+
+export default function WhatsAppFloat() {
+  const text = encodeURIComponent('Olá! Vim pelo site tatica.helpusbr.com e gostaria de solicitar um atendimento.')
+  const wa = `https://wa.me/5583988419118?text=${text}`
+
   return (
-    <a className="wa-float" href={wa} target="_blank" rel="noopener" aria-label="Abrir WhatsApp">
-      <span className="wa-pulse"></span>
-      <span className="wa-icon">⌁</span>
+    <a
+      className="wa-float"
+      href={wa}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Falar no WhatsApp com a Tática Assessoria Contábil"
+      title="Atendimento via WhatsApp"
+    >
+      <span className="wa-pulse" />
+      <svg
+        className="wa-svg-icon"
+        viewBox="0 0 24 24"
+        width="30"
+        height="30"
+        fill="currentColor"
+        aria-hidden="true"
+      >
+        <path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984 0 1.763.459 3.486 1.332 5.001L2 22l5.12-1.341a9.96 9.96 0 004.891 1.277h.004c5.505 0 9.988-4.478 9.99-9.985a9.94 9.94 0 00-2.924-7.057A9.94 9.94 0 0012.012 2zm0 18.236h-.003a8.3 8.3 0 01-4.225-1.157l-.303-.18-3.14.821.838-3.056-.197-.315a8.28 8.28 0 01-1.27-4.364c.001-4.582 3.731-8.31 8.314-8.31 2.22 0 4.305.864 5.87 2.43 1.567 1.568 2.43 3.655 2.428 5.875-.002 4.583-3.732 8.311-8.312 8.311zm4.557-6.223c-.25-.125-1.478-.729-1.707-.812-.228-.083-.395-.125-.561.125-.167.25-.646.812-.792.979-.146.167-.292.188-.542.063a6.85 6.85 0 01-2.014-1.242 7.55 7.55 0 01-1.395-1.737c-.146-.25-.016-.385.109-.509.113-.112.25-.292.375-.438.125-.146.167-.25.25-.417.083-.167.042-.313-.021-.438-.063-.125-.562-1.354-.771-1.854-.203-.487-.41-.421-.562-.429l-.479-.009c-.167 0-.438.063-.667.313s-.875.854-.875 2.083c0 1.229.896 2.417 1.021 2.583.125.167 1.764 2.694 4.274 3.777.597.257 1.063.411 1.426.527.598.19 1.142.163 1.572.099.48-.071 1.478-.604 1.687-1.188.208-.583.208-1.083.146-1.188-.063-.105-.229-.167-.479-.292z"/>
+      </svg>
     </a>
   )
 }
+

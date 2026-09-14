@@ -1,4 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
+import News from '../components/News'
+
 
 const IMAGES = [
   '/assets/image01.jpg',
@@ -103,6 +105,9 @@ export default function NoticiasPage(){
         <button className="hcarousel-btn prev" onClick={prev} aria-label="Anterior">‹</button>
         <button className="hcarousel-btn next" onClick={next} aria-label="Próximo">›</button>
       </div>
+
+      <News />
     </main>
   )
 }
+
