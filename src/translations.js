@@ -29,7 +29,7 @@ export const translations = {
       subtitle: 'Atendimento contábil completo, especializado e orientação contínua.',
       ctaTalk: 'Falar com um contador',
       list: [
-        { title: 'Assessoria Contábil', desc: 'Escrituração contábil rigorosa, balancetes e demonstrações financeiras mensais.' },
+        { title: 'Assessoria Contábil & Consulta de CPF', desc: 'Escrituração contábil rigorosa, balancetes e ferramenta integrada de validação de CPF em tempo real (HelpUS CPF) para empresas e clínicas.' },
         { title: 'Assessoria Fiscal e Tributária', desc: 'Apuração de impostos, emissão de guias e planejamento para redução legal da carga tributária.' },
         { title: 'Assessoria Trabalhista', desc: 'Gestão de folha de pagamento, eSocial, admissões, rescisões e obrigações trabalhistas.' },
         { title: 'Assessoria Societária', desc: 'Abertura, alteração contratual, regularização, certidões negativas e encerramento de empresas.' },
@@ -210,7 +210,7 @@ export const translations = {
       subtitle: 'Comprehensive, specialized accounting support and ongoing guidance.',
       ctaTalk: 'Speak with an Accountant',
       list: [
-        { title: 'Accounting Advisory', desc: 'Rigorous bookkeeping, monthly balance sheets and financial statements.' },
+        { title: 'Accounting Advisory & Real-Time CPF Lookup', desc: 'Rigorous bookkeeping, monthly balance sheets and integrated real-time CPF verification module (HelpUS CPF).' },
         { title: 'Tax & Fiscal Advisory', desc: 'Tax calculation, invoice issuance and legal tax burden reduction strategies.' },
         { title: 'Labor & Payroll Advisory', desc: 'Payroll management, eSocial compliance, hires, terminations and labor obligations.' },
         { title: 'Corporate & Legal Advisory', desc: 'Business formation, contract modifications, corporate standing certificates and dissolution.' },
@@ -391,7 +391,7 @@ export const translations = {
       subtitle: 'Asesoramiento contable completo, especializado y orientación continua.',
       ctaTalk: 'Hablar con un contador',
       list: [
-        { title: 'Asesoría Contable', desc: 'Teneduría de libros contables, balances mensuales y estados financieros.' },
+        { title: 'Asesoría Contable & Consulta de CPF', desc: 'Teneduría de libros contables, balances mensuales y módulo integrado de consulta de CPF en tiempo real (HelpUS CPF).' },
         { title: 'Asesoría Fiscal y Tributaria', desc: 'Cálculo de impuestos, emisión de guías y planificación tributaria legal.' },
         { title: 'Asesoría Laboral y Nomina', desc: 'Gestión de nóminas, eSocial, contrataciones, despidos y obligaciones laborales.' },
         { title: 'Asesoría Societaria y Legal', desc: 'Apertura de empresas, modificaciones contractuales, certificados de solvencia y cierre.' },
